@@ -29,32 +29,38 @@ const Search = () => {
   };
 
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg border border-gray-300">
-      {weatherData && weatherData.weather && (
-        <img
-          className="w-full"
-          src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
-          alt="Weather Icon"
-        />
-      )}
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">Weather Data</div>
-        {weatherData && (
-          <div>
-            <p>Temperature: {weatherData.main.temp}°C</p>
-            <p>Humidity: {weatherData.main.humidity}%</p>
-            <p>Wind Speed: {weatherData.wind.speed} m/s</p>
-            <p>Description: {weatherData.weather[0].description}</p>
+    <div className="flex justify-center items-center h-screen">
+      <div className="max-w-sm rounded overflow-hidden shadow-lg border border-gray-300">
+        {city && (
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">{city}'s Weather</div>
           </div>
         )}
-      </div>
-      <div className="px-6 pt-4 pb-2">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={handleDetails}
-        >
-          View Details
-        </button>
+        {weatherData && weatherData.weather && (
+          <img
+            className="w-24 mx-auto mt-4"
+            src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
+            alt="Weather Icon"
+          />
+        )}
+        <div className="px-6 py-4">
+          {weatherData && (
+            <div>
+              <p>Temperature: {weatherData.main.temp}°C</p>
+              <p>Humidity: {weatherData.main.humidity}%</p>
+              <p>Wind Speed: {weatherData.wind.speed} m/s</p>
+              <p>Description: {weatherData.weather[0].description}</p>
+            </div>
+          )}
+        </div>
+        <div className="px-6 pt-4 pb-2">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={handleDetails}
+          >
+            View Details
+          </button>
+        </div>
       </div>
     </div>
   );
