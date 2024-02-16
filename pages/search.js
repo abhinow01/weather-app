@@ -29,8 +29,8 @@ const Search = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="max-w-sm rounded overflow-hidden shadow-lg border border-gray-300">
+    <div className="flex justify-center items-center h-screen bg-yellow-200">
+<div className="max-w-lg rounded-lg overflow-hidden shadow-lg  p-8 border border-gray-500 backdrop-filter backdrop-blur-lg">
         {city && (
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2">{city}'s Weather</div>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import { CiLocationOn } from "react-icons/ci";
+
 
 const Details = () => {
   const router = useRouter();
@@ -50,19 +52,26 @@ const Details = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Details page</h1>
+    <div className="container mx-auto py-8 ">
+      <div className='flex flex-row justify-between items-baseline'>
+      <CiLocationOn className='h-8 w-8'/>
+      <h1 className="text-3xl font-bold mb-8 text-center">Weather Details for {city}</h1>
+      <div className="flex justify-center">
+        <button className="text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-4 rounded" onClick={toggleTemperature}>{temperatureUnit}</button>
+      </div>
+      </div>
       {weatherData && weatherData.weather && (
-        <div className="mb-8">
+        <div className=" mb-8  flex flex-col items-center justify-center p-4 border border-gray-200 rounded-l">
           <h2 className="text-xl font-bold mb-2">Current Weather</h2>
+          <div className='inline-block p-4'>
           <p>Temperature: {convertTemperature(weatherData.main.temp).toFixed(2)}°{temperatureUnit}</p>
           <p>Humidity: {weatherData.main.humidity}%</p>
           <p>Wind Speed: {weatherData.wind.speed} m/s</p>
           <p>Description: {weatherData.weather[0].description}</p>
+          </div>
         </div>
       )}
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={toggleTemperature}>Toggle Temperature Unit ({temperatureUnit})</button>
-
+      
       {/* Forecast section */}
       <div className="mt-8">
         <h2 className="text-xl font-bold mb-4">Forecast</h2>
@@ -70,10 +79,11 @@ const Details = () => {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             {forecastData.map((forecast, index) => (
               <div key={index} className="bg-white p-4 shadow-md rounded-md">
-                <p className="text-xl font-bold">Day {index + 1}</p>
-                <p className="text-gray-600">Temperature: {convertTemperature(forecast.main.temp).toFixed(2)}°{temperatureUnit}</p>
-                {/* Add other forecast data */}
-              </div>
+              <h2 className="text-xl font-bold">Day {index + 1}</h2>
+              <img src={`https://openweathermap.org/img/w/${forecast.weather[0].icon}.png`} alt="Weather Icon" className="w-16 h-16 mx-auto" />
+              <p className="text-gray-600">Temperature: {convertTemperature(forecast.main.temp).toFixed(2)}°{temperatureUnit}</p>
+              
+            </div>
             ))}
           </div>
         )}
