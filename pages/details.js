@@ -82,6 +82,9 @@ const Details = () => {
               <h2 className="text-xl font-bold">Day {index + 1}</h2>
               <img src={`https://openweathermap.org/img/w/${forecast.weather[0].icon}.png`} alt="Weather Icon" className="w-16 h-16 mx-auto" />
               <p className="text-gray-600">Temperature: {convertTemperature(forecast.main.temp).toFixed(2)}°{temperatureUnit}</p>
+              <div className="text-gray-600">Humidity: {forecast.main.humidity}%</div>
+        <div className="text-gray-600">Wind Speed: {forecast.wind.speed} m/s</div>
+        <div className="text-gray-600">Description: {forecast.weather[0].description}</div>
               
             </div>
             ))}
