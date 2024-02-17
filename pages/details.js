@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { CiLocationOn } from "react-icons/ci";
+import Image from 'next/image';
 
 
 const Details = () => {
@@ -80,7 +81,8 @@ const Details = () => {
             {forecastData.map((forecast, index) => (
               <div key={index} className="bg-white p-4 shadow-md rounded-md">
               <h2 className="text-xl font-bold">Day {index + 1}</h2>
-              <img src={`https://openweathermap.org/img/w/${forecast.weather[0].icon}.png`} alt="Weather Icon" className="w-16 h-16 mx-auto" />
+              <Image src={`https://openweathermap.org/img/w/${forecast.weather[0].icon}.png`} alt="Weather Icon" width={100}
+              height={100} className="w-16 h-16 mx-auto" />
               <p className="text-gray-600">Temperature: {convertTemperature(forecast.main.temp).toFixed(2)}°{temperatureUnit}</p>
               <div className="text-gray-600">Humidity: {forecast.main.humidity}%</div>
         <div className="text-gray-600">Wind Speed: {forecast.wind.speed} m/s</div>

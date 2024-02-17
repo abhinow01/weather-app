@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 const Search = () => {
   const router = useRouter();
@@ -33,14 +34,16 @@ const Search = () => {
 <div className="max-w-lg rounded-lg overflow-hidden shadow-lg  p-8 border border-gray-500 backdrop-filter backdrop-blur-lg">
         {city && (
           <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">{city}'s Weather</div>
+        <div className="font-bold text-xl mb-2">{city}&apos;s Weather</div>
           </div>
         )}
         {weatherData && weatherData.weather && (
-          <img
+          <Image
             className="w-24 mx-auto mt-4"
             src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
             alt="Weather Icon"
+            width={100}
+            height={100}
           />
         )}
         <div className="px-6 py-4">
